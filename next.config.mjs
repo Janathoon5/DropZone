@@ -1,14 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
 
-export default nextConfig
+const nextConfig = {
+  output: 'export',
+  basePath: isGithubPages ? '/DropZone' : '',
+  assetPrefix: isGithubPages ? '/DropZone/' : '',
+};
+
+module.exports = nextConfig;
